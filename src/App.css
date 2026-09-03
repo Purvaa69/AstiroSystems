@@ -1,38 +1,155 @@
-.App {
-  text-align: center;
+/* =========================================
+   INVOICE PAGE - SCREEN VIEW
+========================================= */
+
+.invoice-page {
+  width: 210mm;
+  min-height: 330mm;
+  margin: 20px auto;
+  padding: 8mm;
+  background: white;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* =========================================
+   PRINT SETTINGS
+========================================= */
+
+@media print {
+
+  /* -----------------------------------------
+     A4 PAPER
+  ----------------------------------------- */
+
+  @page {
+    size: A4;
+    margin: 5mm;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
+  /* -----------------------------------------
+     BODY
+  ----------------------------------------- */
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  html,
+  body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
   }
-  to {
-    transform: rotate(360deg);
+
+
+  /* -----------------------------------------
+     IMPORTANT:
+     Preserve colors/backgrounds while printing
+  ----------------------------------------- */
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+
+  /* -----------------------------------------
+     INVOICE PAGE
+  ----------------------------------------- */
+
+  .invoice-page {
+    width: 100% !important;
+    min-height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: white !important;
+    box-sizing: border-box;
+  }
+
+
+  /* -----------------------------------------
+     TABLE PAGINATION
+  ----------------------------------------- */
+
+  table {
+    width: 100%;
+    page-break-inside: auto;
+    break-inside: auto;
+  }
+
+
+  /* -----------------------------------------
+     DON'T CUT TABLE ROWS
+  ----------------------------------------- */
+
+  tr {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+
+  /* -----------------------------------------
+     REPEAT TABLE HEADER ON NEW PAGE
+  ----------------------------------------- */
+
+  thead {
+    display: table-header-group;
+  }
+
+
+  /* -----------------------------------------
+     TABLE FOOTER
+  ----------------------------------------- */
+
+  tfoot {
+    display: table-footer-group;
+  }
+
+
+  /* -----------------------------------------
+     KEEP IMPORTANT SECTIONS TOGETHER
+  ----------------------------------------- */
+
+  .invoice-summary,
+  .tax-section,
+  .payment-section,
+  .invoice-footer {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+
+  /* -----------------------------------------
+     DON'T BREAK COMMON INVOICE SECTIONS
+  ----------------------------------------- */
+
+  .invoice-header,
+  .bill-to-section {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+
+  /* -----------------------------------------
+     PRESERVE BLUE HEADER BACKGROUNDS
+  ----------------------------------------- */
+
+  .invoice-header,
+  .invoice-header *,
+  .invoice-summary *,
+  .tax-section *,
+  table th,
+  table thead,
+  table thead tr,
+  table thead th {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+
+  /* -----------------------------------------
+     REMOVE SCREEN-ONLY SPACING
+  ----------------------------------------- */
+
+  .invoice-page {
+    box-shadow: none !important;
   }
 }

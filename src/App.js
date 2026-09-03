@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import InvoiceHeader from "./components/invoice/InvoiceHeader";
+import BillingDetails from "./components/invoice/BillingDetails";
+import InvoiceItemsTable from "./components/invoice/InvoiceItemsTable";
+import InvoiceSummary from "./components/invoice/InvoiceSummary";
+import TaxSummary from "./components/invoice/TaxSummary";
+import PaymentDetails from "./components/invoice/PaymentDetails";
+import InvoiceFooter from "./components/invoice/InvoiceFooter";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="invoice-page">
+      <InvoiceHeader />
+
+      <BillingDetails />
+
+      <InvoiceItemsTable />
+
+      <InvoiceSummary />
+
+      <TaxSummary />
+
+      <PaymentDetails />
+
+      <InvoiceFooter />
     </div>
   );
 }
